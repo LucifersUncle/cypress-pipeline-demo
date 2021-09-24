@@ -2,7 +2,6 @@ name: 'Cypress E2E Testing'
 
 trigger:
 - master
-- dev
 
 schedules:
 - cron: "0 6 * * *"
@@ -14,8 +13,6 @@ schedules:
 variables:
 - ${{ if eq(variables['build.SourceBranchName'], 'master') }}:
   - group: vargroup-master
-- ${{ if ne(variables['build.SourceBranchName'], 'master') }}:
-  - group: vargroup-dev
 - name: npm_config_cache
   value: $(Pipeline.Workspace)/.npm
 - name: CYPRESS_CACHE_FOLDER # Overrides the default cache location
